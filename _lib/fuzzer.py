@@ -20,20 +20,17 @@ class Fuzzer(object):
                  iterate_function,
                  frd_function,
                  plot=True):
-        """Init the class.
+        '''
+        Initializes the fuzzer object.
+        Args:
+            queue: The queue to use for managing the fuzzing process.
+            objective_function: A function to build objective.
+            mutation_function: A function to mutate the data.
+            fetch_function: A function to fetch prediction for fuzzing.
+            iterate_function: A function to iterate over the fuzzed data.
+            frd_function: A function for the calculation of FRD score.
+        '''
 
-    Args:
-      corpus: An InputCorpus object.
-      coverage_function: a function that does CorpusElement -> Coverage.
-      metadata_function: a function that does CorpusElement -> Metadata.
-      objective_function: a function that checks if a CorpusElement satisifies
-        the fuzzing objective (e.g. find a NaN, find a misclassification, etc).
-      mutation_function: a function that does CorpusElement -> Metadata.
-      fetch_function: grabs numpy arrays from the TF runtime using the relevant
-        tensors.
-    Returns:
-      Initialized object.
-    """
         self.plot = plot
         self.queue = queue
         self.metadata_function = metadata_function

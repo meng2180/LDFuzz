@@ -377,6 +377,19 @@ def iterate_function(args):
 #############################
 # fetch_function
 def fetch_function(dataset_name, model, loader, infos_dict):
+    '''
+    Fetches predictions from a model.
+    Args:
+        dataset_name (str): The name of the dataset (e.g., 'kitti', 'nuscenes').
+        model (object): The pretrained model.
+        loader (object): The data loader.
+        infos_dict (dict): A dictionary containing dataset information.
+    Returns:
+        tuple: A tuple containing three lists:
+            - pred_boxes (list): A list of predicted bounding boxes.
+            - pred_scores (list): A list of predicted scores.
+            - pred_labels (list): A list of predicted labels.
+    '''
 
     if dataset_name == config.kitti:
         loader.dataset.kitti_infos = infos_dict
@@ -457,6 +470,15 @@ def fetch_function(dataset_name, model, loader, infos_dict):
 
 
 def build_fetch_function(dataset_name, model_name, batch_size):
+    '''
+    Builds a partial function for fetching predictions based on the provided dataset and model.
+    Args:
+        dataset_name (str): The name of the dataset.
+        model_name (str): The name of the model to use.
+        batch_size (int): The batch size to use for fetching predictions.
+    Returns:
+        callable: A partial function.
+    '''
 
     return partial(
         fetch_function,

@@ -23,16 +23,31 @@ import random
 import time
 from datetime import datetime as dt
 from _lib.queue.queue_coverage import ImageInputCorpus
-from config.lidar_config import load_lidar_config
 
 
 def dry_run(dataset_name, indir, fetch_function, queue, batch_size):
+    '''
+    Executes a dry run of the fuzzer.
+    This function performs a simulation of the fuzzer execution without actually
+    running the fuzzer.
+    Args:
+        dataset_name (str): The name of the dataset being used.
+        indir (str): The directory containing the seed files.
+        fetch_function (callable): A function that performs the prediction.
+        queue (object): A queue object for managing the fuzzer's state.
+        batch_size (int): The number of seed files to process in each batch.
+    Returns:
+        None.  This function performs a dry run and does not return a value.
+    '''
+
     seed_list = sorted(os.listdir(indir))
     DUMPS_utlis.init_DUMPS(queue.DUMPS)
 
     with tqdm(total=len(seed_list)) as progress_bar:
         for start_index in range(0, len(seed_list), batch_size):
             infos_dict = []
+
+            # The preprocessing steps before collating the seeds into batches
             for index in range(start_index,
                                min(len(seed_list), start_index + batch_size)):
                 seed_name = seed_list[index]
@@ -43,9 +58,7 @@ def dry_run(dataset_name, indir, fetch_function, queue, batch_size):
                     infos_dict += _seed
                     progress_bar.update(1)
 
-            # Each seed will contain two images, i.e., the reference image and mutant (see the paper)
-            # Predict the mutant and obtain the outputs
-            # coverage_batches is the output of internal layers and metadata_batches is the output of the prediction result
+            # Obtain the prediction outputs.
             pred_boxes, _, _ = fetch_function(infos_dict)
 
             for index in range(0, batch_size):
@@ -89,11 +102,14 @@ def execute(args):
 
     load_lidar_config(args.dataset_name)
 
+    # This function is responsible for fetching data from the input queue and processing it to obtain 3D object bounding box predictions.
     fetch_function = build_fetch_function(args.dataset_name, args.model_name,
                                           args.batch_size)
 
+    # We use FRD to control the realism of the transformed point cloud.
     frd_function = build_frd_function(args.dataset_name)
 
+    # This function is used to mutate the 3D object's LiDAR point cloud
     mutation_function = lidar_mutation_functionV2(queue, args.dataset_name,
                                                   args.criteria)
 
