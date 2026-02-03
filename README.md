@@ -261,25 +261,17 @@ python rq3.py
 ## Citation
 
 ```shell
-@article{DBLP:journals/tse/GuoSGFWTWMC26,
-  author       = {An Guo and
-                  Zhiwei Su and
-                  Xinyu Gao and
-                  Chunrong Fang and
-                  Senrong Wang and
-                  Haoxiang Tian and
-                  Wu Wen and
-                  Lei Ma and
-                  Zhenyu Chen},
-  title        = {Spatial Semantic Fuzzing for LiDAR-Based Autonomous Driving Perception
-                  Systems},
-  journal      = {{IEEE} Trans. Software Eng.},
-  volume       = {52},
-  number       = {1},
-  pages        = {187--205},
-  year         = {2026},
-  url          = {https://doi.org/10.1109/TSE.2025.3627580},
-  doi          = {10.1109/TSE.2025.3627580}
-}
+@ARTICLE{11223186,
+  author={Guo, An and Su, Zhiwei and Gao, Xinyu and Fang, Chunrong and Wang, Senrong and Tian, Haoxiang and Wen, Wu and Ma, Lei and Chen, Zhenyu},
+  journal={IEEE Transactions on Software Engineering}, 
+  title={Spatial Semantic Fuzzing for LiDAR-Based Autonomous Driving Perception Systems}, 
+  year={2026},
+  volume={52},
+  number={1},
+  pages={187-205},
+  keywords={Autonomous vehicles;Testing;Three-dimensional displays;Point cloud compression;Semantics;Laser radar;Object detection;Fuzzing;Feature extraction;Sensors;Software testing;fuzz testing;autonomous driving system;light detection and ranging},
+  doi={10.1109/TSE.2025.3627580}}
+
 ```
+
 
