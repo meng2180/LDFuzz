@@ -257,3 +257,29 @@ Output the result `rq3_area.pdf`, `rq3_count.pdf`.
 ```
 python rq3.py
 ```
+
+## Citation
+
+```shell
+@article{DBLP:journals/tse/GuoSGFWTWMC26,
+  author       = {An Guo and
+                  Zhiwei Su and
+                  Xinyu Gao and
+                  Chunrong Fang and
+                  Senrong Wang and
+                  Haoxiang Tian and
+                  Wu Wen and
+                  Lei Ma and
+                  Zhenyu Chen},
+  title        = {Spatial Semantic Fuzzing for LiDAR-Based Autonomous Driving Perception
+                  Systems},
+  journal      = {{IEEE} Trans. Software Eng.},
+  volume       = {52},
+  number       = {1},
+  pages        = {187--205},
+  year         = {2026},
+  url          = {https://doi.org/10.1109/TSE.2025.3627580},
+  doi          = {10.1109/TSE.2025.3627580}
+}
+```
+
